@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
 """
 Created on Tue May 30 19:00:00 2023
 @author: Ricardo Sass
