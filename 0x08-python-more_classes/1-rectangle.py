@@ -22,6 +22,7 @@ class Rectangle:
         self.width = width
         self.height = height
         """
+        
         self.__height = height
         self.__width = width
 
@@ -33,6 +34,7 @@ class Rectangle:
         Returns:
             height (int): The height of the rectangle
         """
+
         return self.__height
 
     @height.setter
@@ -47,6 +49,7 @@ class Rectangle:
             TypeError: If height is not an integer
             ValueError: If height is less than 0
         """
+
         if type(value) is not int:
             raise TypeError("height must be an integer")
         elif value < 0:
@@ -62,6 +65,7 @@ class Rectangle:
         Returns:
             width (int): The width of the rectangle
         """
+
         return self.__width
 
     @width.setter
@@ -76,6 +80,7 @@ class Rectangle:
             TypeError: If width is not an integer
             ValueError: If width is less than 0
         """
+
         if type(value) is not int:
             raise TypeError("width must be an integer")
         elif value < 0:
