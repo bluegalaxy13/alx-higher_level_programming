@@ -1,20 +1,23 @@
 #!/usr/bin/python3
-
+import json
 """
 @author: Ricardo Sass
 """
 
+"""Module containing the function from_json_string
+"""
 
-def append_write(filename="", text=""):
+
+
+def from_json_string(my_str):
+    """Returns an object (Python data structure) represented by a JSON string.
+
+    Args:
+        my_str (str): json object to convert to Python object.
+
+    Returns:
+        type: Python object.
     """
-    Appends inputed text into a utf-8 encoded text file
-
-    Arguments:
-        filename (str): The name of the file to open
-        text (str): The text to append
-
-    Return:
-        A file with appened text
-    """
-    with open(filename, 'a', encoding='utf-8') as file:
-        return file.write(text)
+    # print("type json.loads(my_str)--> {}".format(type(json.loads(my_str))))
+    # print("type my_str--> {}".format(type(my_str)))
+    return json.loads(my_str)
