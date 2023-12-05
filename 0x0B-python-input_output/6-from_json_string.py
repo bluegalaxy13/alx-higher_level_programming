@@ -6,14 +6,14 @@
 import json
 
 
-def to_json_string(my_obj):
+def from_json_string(my_str):
     """
-    Returs a json string containing object's representation
+    Convert a json string to a python object
 
     Arguments:
         my_obj (str): The inputed object to convert in json format
 
     Return:
-        A json format text
+        A Python object from json
     """
-    return json.dumps(my_obj)
+    return json.loads(my_str)
