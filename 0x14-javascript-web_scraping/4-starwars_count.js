@@ -24,4 +24,3 @@ request(url, (err, response, body) => {
     console.error(parseError); // Handle JSON parsing errors
   }
 });
-
