@@ -6,7 +6,6 @@ const url = process.argv[2];
 request(url, (err, response, body) => {
   if (err) {
     console.error(err); // Use console.error for error logging
-    return; // Exit early if there's an error
   }
 
   let counter = 0;
