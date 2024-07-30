@@ -4,33 +4,27 @@ const request = require('request');
 const url = process.argv[2];
 const myDict = {};
 
-request(url, function (err, data, body) 
-{
-  if (err) 
-  {
-    console.log(err);
-  } 
-  
-  else 
-  {
-    const response = JSON.parse(body);
+request(url, (err, response, body) => {
+  if (err) {
+    console.error(err); // Use console.error for error logging
+  }
 
-    for (let i = 0; i < response.length; i++) 
-    {
-      if (response[i].completed === true) 
-      {
-        if (myDict[response[i].userId] === undefined) 
-        {
-          myDict[response[i].userId] = 1;
-        } 
-        
-        else 
-        {
-          myDict[response[i].userId] += 1;
+  try {
+    const data = JSON.parse(body);
+
+    data.forEach(task => {
+      if (task.completed) {
+        if (myDict[task.userId] === undefined) {
+          myDict[task.userId] = 1;
+        } else {
+          myDict[task.userId] += 1;
         }
       }
-    }
+    });
+
+    // Only print users with completed tasks
+    console.log(myDict);
+  } catch (parseError) {
+    console.error(parseError); // Handle JSON parsing errors
   }
-  
-  console.log(myDict);
 });
