@@ -3,29 +3,25 @@
 const request = require('request');
 const url = process.argv[2];
 
-request(url, function (err, data, body) 
-{
-  if (err) 
-  {
-    console.log(err);
-  } 
-  
-  else 
-  {
-    let counter = 0;
+request(url, (err, response, body) => {
+  if (err) {
+    console.error(err); // Use console.error for error logging
+    return; // Exit early if there's an error
+  }
+
+  let counter = 0;
+  try {
     const films = JSON.parse(body).results;
-    for (let result = 0; result < films.length; result++) 
-    {
-      const characters = films[result].characters;
-      for (let j = 0; j < characters.length; j++) 
-      {
-        if (characters[j] === 'https://swapi-api.hbtn.io/api/people/18/' || characters[j] === 'http://swapi-api.hbtn.io/api/people/18/') 
-        {
-          counter += 1;
-        }
+    for (let i = 0; i < films.length; i++) {
+      const characters = films[i].characters;
+      if (characters.some(char => char.includes('/18/'))) {
+        counter += 1;
       }
     }
-    
+
     console.log(counter);
+  } catch (parseError) {
+    console.error(parseError); // Handle JSON parsing errors
   }
 });
+
