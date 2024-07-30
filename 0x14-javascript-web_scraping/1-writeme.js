@@ -2,9 +2,12 @@
 
 const fs = require('fs');
 
-fs.writeFile(process.argv[2], process.argv[3], err => {
+const filePath = process.argv[2];
+const dataToWrite = process.argv[3];
+
+fs.writeFile(filePath, dataToWrite, 'utf8', err => {
   if (err) {
-    console.log(err);
-    return; // Added return to exit early if there's an error
+    console.error(err); // Use console.error for error logging
+    return; // Exit early if there's an error
   }
 });
